@@ -31,6 +31,13 @@ class APIFeatures {
         
         return this
     }
+
+    paginate(resPerPage){
+        const currentPage = Number(this.queryStr.page) || 1
+        const skip = currentPage * (resPerPage - 1 )
+        this.query.limit(resPerPage).skip(skip)
+        return this
+    }
 }
 
 module.exports = APIFeatures
